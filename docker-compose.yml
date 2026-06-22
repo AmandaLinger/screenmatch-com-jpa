@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: screenmatch-application
+    ports:
+      - "5362:5432"
+    environment:
+      POSTGRES_DB: screenmatch-application
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
