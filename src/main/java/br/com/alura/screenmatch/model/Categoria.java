@@ -11,12 +11,9 @@ public enum Categoria {
     private String categoriaEmPortugues;
 
     Categoria(String categoriaOmdb, String categoriaEmPortugues) {
-
         this.categoriaOmdb = categoriaOmdb;
         this.categoriaEmPortugues = categoriaEmPortugues;
     }
-
-
     public static Categoria fromString(String text) { //interpreta o valor do ombd e converte para as categorias listadas acima
         for (Categoria categoria : Categoria.values()) {
             if (categoria.categoriaOmdb.equalsIgnoreCase(text)) {
@@ -35,6 +32,4 @@ public enum Categoria {
         throw new IllegalArgumentException("Nenhuma categoria encontrada para a string fornecida: " + text);
     }
 }
-
-
 //o ENUM cria constantes na nossa aplicação

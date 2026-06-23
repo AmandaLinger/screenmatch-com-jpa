@@ -4,6 +4,7 @@ import br.com.alura.screenmatch.model.*;
 import br.com.alura.screenmatch.repository.SerieRepository;
 import br.com.alura.screenmatch.service.ConsumoApi;
 import br.com.alura.screenmatch.service.ConverteDados;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -38,6 +39,7 @@ public class Principal {
                     6 - Top 5 séries
                     7 - Buscar séries por categoria
                     8 - Buscar séries pelo numero de temporadas e avaliação
+                    9 - Buscar episódios por trecho
                     
                     0 - Sair                                 
                     """;
@@ -73,6 +75,9 @@ public class Principal {
                     break;
                 case 8:
                     buscarSeriePorTemporadaEAvaliacao();
+                    break;
+                case 9:
+                    buscarEpisodioPorTrecho();
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -182,11 +187,22 @@ public class Principal {
         System.out.println("Com qual média de avaliação?");
         var mediaAvaliacao = leitura.nextDouble();
 
-        List<Serie> seriesPorTempECateg = repositorio.findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(numeroTemporadas , mediaAvaliacao);
+        List<Serie> seriesPorTempECateg = repositorio.seriesPorTemporadaEAvaliacao(numeroTemporadas, mediaAvaliacao);
 
         System.out.println("*** Séries filtradas ***");
         seriesPorTempECateg.forEach(s ->
                 System.out.println(s.getTitulo() + "  - avaliação: " + s.getAvaliacao()));
+    }
+
+
+    private void buscarEpisodioPorTrecho() {
+        System.out.println("Qual o nome de episódio para busca?");
+        var trechoEpisodio = leitura.nextLine();
+
+        List<Episodio> episodiosEncontrados = repositorio.episodiosPorTrecho(trechoEpisodio);
+        episodiosEncontrados.forEach( e ->
+                System.out.printf("Série: %s Temporada %s - Episódio %s - %s\n",
+                        e.getSerie().getTitulo(), e.getTemporada(), e.getNumeroEpisodio(), e.getTitulo()));
     }
 
 
