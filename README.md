@@ -1,14 +1,10 @@
 # Java: persistência de dados e consultas com Spring Data JPA
 
-Projeto desenvolvido no segundo curso da formação Avançando com Java da Alura
-
-
 ## 🔨 Objetivos do projeto
 
-- Evoluir no projeto Screenmatch, iniciado no primeiro curso da formação, criando um menu com várias opções;
+- Evoluir no projeto Screenmatch, criando um menu com várias opções;
 - Modelar as abstrações da aplicação através de classes, enums, atributos e métodos;
-- Consumir a API do ChatGPT;
+- Consumir a API do Gemini;
 - Utilizar o Spring Data JPA para persistir dados no banco;
-- Conhecer vários tipos de banco de dados e utilizar o PostgreSQL;
-- Trabalhar com vários tipos de consultas ao banco de dados;
+- Utilizar o PostgreSQL;
 - Aprofundar na interface JPARepository
